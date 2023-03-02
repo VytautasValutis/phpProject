@@ -10,33 +10,18 @@
 <body>
 
 <?php
+$val = rand(0, 23);
+$min = rand(0, 59);
+$sek = rand(0, 59);
+echo "$val val $min min $sek sek <br>";
+$plius = rand(0, 300);
+echo "$plius plius sek <br>";
+$visoSek = $val * 3600 + $min * 60 + $sek + $plius;
+$val = floor($visoSek / 3600);
+$min = floor(($visoSek - ($val * 3600)) / 60);
+$sek = floor($visoSek - $val * 3600 - $min * 60);
+echo "$val val $min min $sek sek <br>";
 
-// echo '<h1 class="rezstyle">';
-$sk1  = rand(0,100);
-$sk2  = rand(0,100);
-$sk3  = rand(0,100);
-$count = 0;
-$sum = 0;
-if($sk1 >= 10 && $sk1 <=90) {
-    $sum += $sk1;
-    $count++;
-}
-if($sk2 >= 10 && $sk2 <=90) {
-    $sum += $sk2;
-    $count++;
-}
-if($sk3 >= 10 && $sk3 <=90) {
-    $sum += $sk3 ;
-    $count++;
-}
-// echo '<br>';
-// echo $sum;
-if($count > 1) {
-    $vid2 = round($sum / $count, 0);
-} else {
-    $vid2 = $sum;
-}
-$vid1 = round(($sk1 + $sk2 + $sk3) / 3, 0);
-echo "$sk1 $sk2 $sk3 => vid1: $vid1 vid2: $vid2";
+
 ?>
 </body> 

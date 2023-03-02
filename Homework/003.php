@@ -17,21 +17,7 @@ $kintamasis2  = rand(0,25);
 $kintamasis3  = rand(0,25);
 $minSk = min($kintamasis1, $kintamasis2, $kintamasis3);
 $maxSk = max($kintamasis1, $kintamasis2, $kintamasis3);
-if($kintamasis1 === $kintamasis2 || $kintamasis1 === $kintamasis3) {
-    $rez = $kintamasis1;
-}
-if($kintamasis2 === $kintamasis3) {
-    $rez = $kintamasis2;
-}
-if($minSk < $kintamasis3 && $kintamasis3 < $maxSk) {
-    $rez = $kintamasis3;
-}
-if($minSk < $kintamasis2 && $kintamasis2 < $maxSk) {
-    $rez = $kintamasis2;
-}
-if($minSk < $kintamasis1 && $kintamasis1 < $maxSk) {
-    $rez = $kintamasis1;
-}
+$rez = $kintamasis1 + $kintamasis2 + $kintamasis3 - $minSk - $maxSk;
 echo "k1 $kintamasis1 k2 $kintamasis2 k3 $kintamasis3 rez $rez";
 echo '</h1>';
 
