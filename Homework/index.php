@@ -10,8 +10,23 @@
 <body>
 
 <?php
-$kint = 'Star Wars: Episode '.str_repeat(' ',rand(0, 5)).rand(1, 9).' - A New Hope';
-echo $kint.'<br>';
-echo substr($kint, stripos($kint, '-') - 2, 1);
+$kint = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
+$kint2 = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+$sum = 0;
+foreach(str_word_count($kint, 1) as $w) {
+    if(strlen($w) <= 5) {
+        $sum++;
+    }
+};
+echo $sum.'<br>';
+$sum = 0;
+foreach(str_word_count($kint2, 1 , 'ą') as $w) {
+    if(strlen($w) <= 5) {
+        $sum++;
+    }
+};
+echo $sum;
+
+
 ?>
 </body> 
