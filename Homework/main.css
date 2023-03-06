@@ -10,3 +10,7 @@ body {
 .rezstyle {
     color: #000;
 }
+
+p {
+    margin: 0px;
+}
