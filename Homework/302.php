@@ -8,19 +8,12 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-<?php 
-$c = 0;
-do {
-    if( rand(0, 1) === 0 ) {
-        $m = 'H';
-        $c++;
-    } else {
-        $m = 'S';
-        $c = 0;
-    }; ?> 
-    <p><?= $m ?></p>
 
-<?php } while($c < 3) ?>
+<?php for ($i=0; $i < 300; $i++) : ?>
+    <?php $k = rand(0,300); ?>
+        <?php if($k > 275) {$col = 'red';} else {$col = 'black';} ?> 
+        <span style="color: <?= $col ?>;"><?= $k ?></span>
+<?php endfor ?>
 
 
 </body> 

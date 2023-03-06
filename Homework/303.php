@@ -8,19 +8,10 @@
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
-<?php 
-$c = 0;
-do {
-    if( rand(0, 1) === 0 ) {
-        $m = 'H';
-        $c++;
-    } else {
-        $m = 'S';
-        $c = 0;
-    }; ?> 
-    <p><?= $m ?></p>
-
-<?php } while($c < 3) ?>
+<span>77</span>
+<?php for ($i=154; $i < rand(3000, 4000); $i+=77) : ?>
+        <span><?= ','.$i ?></span>
+<?php endfor ?>
 
 
 </body> 
