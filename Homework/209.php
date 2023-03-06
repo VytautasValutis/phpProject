@@ -20,8 +20,8 @@ foreach(str_word_count($kint, 1) as $w) {
 };
 echo $sum.'<br>';
 $sum = 0;
-foreach(str_word_count($kint2, 1 , 'ą') as $w) {
-    if(strlen($w) <= 5) {
+foreach(str_word_count($kint2, 1 , 'ąų') as $w) {
+    if(mb_strlen($w) <= 5) {
         $sum++;
     }
 };
