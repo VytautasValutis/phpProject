@@ -10,15 +10,8 @@
 <body>
 
 <?php
-$a = rand(1000, 9999);
-$b = rand(1000, 9999);
-$c = rand(1000, 9999);
-$d = rand(1000, 9999);
-$e = rand(1000, 9999);
-$f = rand(1000, 9999);
-echo "Sugeneruota: $a $b $c $d $e $f <br>";
-
-echo "min($a,$b)  min($b, $c)  min($c, $d)  min($d, $e)  min($e, $f)";
+$let = array([a...z]);
+var_dump($let);
 
 ?>
 </body> 
