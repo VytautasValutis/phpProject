@@ -10,70 +10,21 @@
 <body>
 <?php
 // echo '<pre>';
-$arr = [];
-foreach(range(0, 9) as $i) {
-    $num = rand(0, 5);
-    if($num === 0) {
-        $arr[$i] = rand(0, 10);
-    } else {
-        foreach(range(0, $num - 1) as $j) {
-            $arr[$i][$j] = rand(0, 10);
-        };
-    };
-};
-foreach($arr as $v) {
-    if(is_array($v)) : ?>    
-<p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$v) ?> </p>
-<?php else : ?>
-<p style="margin: 0; font-size: 22px; margin-block: 0"> <?= $v ?> <p>
-<?php endif;
-};
-echo '------------------------';
-$sum = 0;
-foreach($arr as $v) {
-    if(is_array($v)) {
-        foreach($v as $h) {
-            $sum += $h;
-        };
-    } else {
-        $sum += $v;
-    };
-}
-?>
-<p> suma : <?= $sum ?></p>
-<?php
-echo '------------------------';
-$key = [];
-foreach($arr as $v) {
-    if(is_array($v)) {
-        $ss = 0;
-        foreach($v as $h) {
-            $ss += $h;
-        };
-        $key[] = $ss;
-    } else {
-        $key[] = $v;
-    };
-};
-asort($key, SORT_NUMERIC);
-$sort_key = array_keys($key);
-unset($k);
-$arr2 = [];
-foreach($sort_key as $k) {
-    if(is_array($arr[$k])) {
-        $arr2[] = array(...$arr[$k]);
-    } else {
-        $arr2[] = $arr[$k];
+do {
+    $a = rand(0, 1000);
+    $b = rand(0, 1000);
+    } while ($a == $b);
+    $long = rand(10,30);
+    $sk1 = $sk2 = 0;
+    echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+    $c = [];
+    for ($i=0; $i<$long; $i++) {
+    $c[] = array_rand(array_flip([$a, $b]));
     }
-};
-foreach($arr2 as $v) {
-    if(is_array($v)) : ?>    
-<p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$v) ?> </p>
-<?php else : ?>
-<p style="margin: 0; font-size: 22px; margin-block: 0"> <?= $v ?> <p>
-<?php endif;
-};
-echo '------------------------';
-?>
+    echo '<h4>Masyvas:</h4>';
+    echo '<pre>';
+    print_r($c);
+    echo '</pre>';
+    ?>
 </body> 
 
