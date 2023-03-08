@@ -1,0 +1,16 @@
+body {
+    font-size: 40px;
+    margin: 100px;
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; */
+
+}
+
+.rezstyle {
+    color: #000;
+}
+
+p {
+    margin: 0px;
+}

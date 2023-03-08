@@ -53,7 +53,7 @@ echo "<br> $rez ";
 
 
 $fun4 = function() {
-    echo '<h2 style="color: blue";'
+    echo '<h2 style="color: blue";';
 };
 
 
