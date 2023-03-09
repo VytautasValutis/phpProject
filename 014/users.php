@@ -32,9 +32,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
     <title>Users</title>
 </head>
 <body>
-    <a href="http://localhost/phpProject/014/users.php?page=1&sort=<?= $sort ?>">PAGE 1</a> 
-    <a href="http://localhost/phpProject/014/users.php?page=2&sort=<?= $sort ?>">PAGE 2</a> 
-    <a href="http://localhost/phpProject/014/users.php?page=3&sort=<?= $sort ?>">PAGE 3</a> 
+    <?php require __DIR__ . '/menu.php' ?>
     <form action="" metod="get">
         <fieldset>
             <legend>SORT:</legend>
@@ -51,7 +49,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
     <?php foreach($users as $user) :?>
         <li>
             <b> ID:</b> <?= $user['user_id']?> <i><?= $user['name']?> <?= $user['surname']?></i>
-            <form action="?id=<?= $user['user_id'] ?>" method="post">
+            <form action="http://localhost/phpProject/014/delete.php?id=<?= $user['user_id'] ?>" method="post">
                 <button type="submit">delete</button> 
             </form>
         </li>
