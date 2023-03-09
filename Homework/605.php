@@ -9,6 +9,7 @@
 </head>
 <body>
 <?php
+$sk = rand(2, 999);
 // echo '<pre>';
 function dalikliai(int $a) {
     $count = 0;
@@ -18,15 +19,14 @@ function dalikliai(int $a) {
 return $count;
 }
 
-$arr = array_map(fn($_) => rand(333,777), range(0, 99));
+$arr = array_map(fn($_) => rand(33,77), range(0, 99));
+foreach($arr as $v) {
+    $arr_dal[] = dalikliai($v);
+};
 ?>
 <p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$arr) ?> </p> 
 <?php
-foreach($arr as $i => $v) {
-    iF(dalikliai($v) === 0) {
-        unset($arr[$i]);
-    }
-};
+array_multisort($arr_dal,SORT_DESC,$arr);
 ?>
 <p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$arr) ?> </p>
 

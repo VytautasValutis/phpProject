@@ -9,6 +9,7 @@
 </head>
 <body>
 <?php
+$sk = rand(2, 999);
 // echo '<pre>';
 function dalikliai(int $a) {
     $count = 0;
@@ -17,18 +18,9 @@ function dalikliai(int $a) {
     }
 return $count;
 }
+?>
+<h1>Skaiciaus <?= $sk ?> dalikliai <?= dalikliai($sk) ?> </h1>
 
-$arr = array_map(fn($_) => rand(333,777), range(0, 99));
-?>
-<p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$arr) ?> </p> 
-<?php
-foreach($arr as $i => $v) {
-    iF(dalikliai($v) === 0) {
-        unset($arr[$i]);
-    }
-};
-?>
-<p style="margin: 0; font-size: 22px; margin-block: 0"><?= implode(' ',$arr) ?> </p>
 
 </body> 
 
