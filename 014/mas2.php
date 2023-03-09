@@ -12,7 +12,7 @@ function getUnique($to) {
 function randString() {
     $letters = range('a','z');
     $out = '';
-    foreach(1, rand(5, 15)) {
+    foreach(range(1, rand(5, 15)) as $_) {
         $out .= $letters[rand(0, count($letters) - 1)];
     };
     return $out;
