@@ -10,7 +10,7 @@
 <body>
 <?php
 // echo '<pre>';
-function gogo() {
+function gogo(int $a) {
     $str = md5(time());
     // echo $str;
     $str = preg_replace_callback(
@@ -24,7 +24,7 @@ function gogo() {
 return "<h2> $str </h2>";
 }
 ?>
-<?= gogo() ?>
+<?= gogo('a') ?>
 
 
 </body> 
