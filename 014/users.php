@@ -49,6 +49,7 @@ $users = array_slice($users, ($page - 1) * 10, 10);
     <?php foreach($users as $user) :?>
         <li>
             <b> ID:</b> <?= $user['user_id']?> <i><?= $user['name']?> <?= $user['surname']?></i>
+            <a href="http://localhost/phpProject/014/delete.php"?edit=<?= $user['user_id'] ?> >EDIT</a>
             <form action="http://localhost/phpProject/014/delete.php?id=<?= $user['user_id'] ?>" method="post">
                 <button type="submit">delete</button> 
             </form>
