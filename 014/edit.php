@@ -14,8 +14,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-
-
     foreach($users as &$user) {
         if($user[$user_id] == $id) {
             $user['name'] = $_POST['name'];
