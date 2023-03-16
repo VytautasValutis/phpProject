@@ -2,12 +2,9 @@
 require __DIR__ . '/Stikline.php';
 
 
-$stik200 = new Stikline;
-$stik200->stiklinesTuris(200);
-$stik150 = new Stikline;
-$stik150->stiklinesTuris(150);
-$stik100 = new Stikline;
-$stik100->stiklinesTuris(100);
+$stik200 = new Stikline(200) ;
+$stik150 = new Stikline(150);
+$stik100 = new Stikline(100);
 
 // var_dump($stik200); echo '<br>';
 // var_dump($stik150); echo '<br>';
