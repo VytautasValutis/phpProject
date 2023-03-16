@@ -17,6 +17,9 @@ class Bebras {
     {
         echo '<h1> Alio </h1>';
     }
+    public function __get($what) {
+        echo '<h2> Alio' . $what . '</h2>';
+    }
 
     public function kokiaTavoSpalva() {
         return $this->spalva;

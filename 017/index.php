@@ -20,6 +20,6 @@ fun($bebras2);
 echo "\n\n" . $bebras2->spalva;
 echo "\n\n" . $bebras2->kokiaTavoSpalva();
 
-$bebras2();
+// $bebras2();
 
-
+echo $bebras1->spalva;
