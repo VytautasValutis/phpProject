@@ -15,9 +15,9 @@ class Grybas {
     {
         return $this->valgomas;
     }
-    public function arSukirmijes() :bool
+    public function arSukirmyjes() :bool
     {
-        return $this->sukirmijes;
+        return $this->sukirmyjes;
     }
     public function gryboSvoris() :int
     {
