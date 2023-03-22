@@ -1,0 +1,11 @@
+{
+    "name": "vytas/ns",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vytautas Valutis",
+            "email": "dnc908@gmail.com"
+        }
+    ],
+    "require": {}
+}
