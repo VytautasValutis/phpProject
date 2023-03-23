@@ -4,8 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Vytas\\Clients\\": "src/",
-            "":""
+            "": ""
         }
     },
     "authors": [
