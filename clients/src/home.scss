@@ -1,3 +1,43 @@
-h1 {
-    color: skyblue;
+// .home {
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+// }
+
+// .home h1 {
+//     color: skyblue;
+//     font-size: 150px;
+//     line-height: 1;
+// }
+
+// .home h1 .sub {
+//     color: crimson;
+//     font-size: 30px;
+//     line-height: 1;
+// }
+.home {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+     h1 {
+        color: skyblue;
+        font-size: 150px;
+        line-height: 1;
+        .sub {
+            color: crimson;
+            font-size: 30px;
+            line-height: 1;
+            &.space {
+                letter-spacing: 4.5px;
+            }
+        }
+    }
 }
+
+
+
+
