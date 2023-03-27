@@ -25,6 +25,10 @@ class App {
         if($method == 'GET' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
             return (new ClientsController)->create();
         } 
+
+        if($method == 'POST' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
+            return (new ClientsController)->store();
+        } 
         
         else {
             return '404 PAGE NOT FOUND';
@@ -43,6 +47,12 @@ class App {
        $html = ob_get_contents();
        ob_clean();
        return $html;
+    }
+
+    public static function redirect($url) 
+    {
+        header('Location:' . URL . $url);
+        return '';
     }
 
 }
