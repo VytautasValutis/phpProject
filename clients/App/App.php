@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Controllers\HomeController;
+use App\Controllers\ClientsController;
 
 class App {
 
@@ -19,7 +20,13 @@ class App {
 
         if($method == 'GET' && count($url) == 1 && $url[0] === '') {
             return (new HomeController)->home();
-        } else {
+        } 
+
+        if($method == 'GET' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
+            return (new ClientsController)->create();
+        } 
+        
+        else {
             return '404 PAGE NOT FOUND';
         }
 
