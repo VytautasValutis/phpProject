@@ -10,6 +10,9 @@
           <a class="nav-link active" aria-current="page" href="<?= URL ?>">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?= URL ?>clients">Clients list</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?= URL ?>clients/create">Add client</a>
         </li>
       </ul>
