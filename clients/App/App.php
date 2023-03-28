@@ -8,6 +8,7 @@ class App {
 
     public static function process () {
 
+        session_start();
         $url = explode('/',$_SERVER['REQUEST_URI']);
         array_shift($url);
 
@@ -44,6 +45,10 @@ class App {
 
         if($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'edit') {
             return (new ClientsController)->update($url[2]);
+        } 
+
+        if($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'delete') {
+            return (new ClientsController)->delete($url[2]);
         } 
 
         else {

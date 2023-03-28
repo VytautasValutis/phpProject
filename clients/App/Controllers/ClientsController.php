@@ -63,4 +63,10 @@ class ClientsController {
         return App::redirect('clients');
     }
 
+    public function delete($id) 
+    {
+        (new Json)->delete($id);
+        return App::redirect('clients');
+    }
+
 }
