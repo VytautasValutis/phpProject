@@ -2,8 +2,18 @@
 namespace App\Controllers;
 use App\App;
 use App\DB\Json;
+use App\Services\Auth;
 
 class ClientsController {
+
+    public function __construct()
+    {
+        if(!Auth::get()->isAuth()) {
+            App::redirect('login');
+            die;
+        }
+
+    }
 
     public function index() 
     {

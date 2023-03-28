@@ -3,6 +3,7 @@
 namespace App;
 use App\Controllers\HomeController;
 use App\Controllers\ClientsController;
+use App\Controllers\LoginController;
 
 class App {
 
@@ -19,9 +20,19 @@ class App {
     {
         $method = $_SERVER['REQUEST_METHOD'];
 
+        if($method == 'GET' && count($url) == 1 && $url[0] === 'login') {
+            return (new LoginController)->show();
+        } 
+
+        if($method == 'POST' && count($url) == 1 && $url[0] === 'login') {
+            return (new LoginController)->login();
+        } 
+
         if($method == 'GET' && count($url) == 1 && $url[0] === '') {
             return (new HomeController)->home();
         } 
+
+
 
         if($method == 'GET' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
             return (new ClientsController)->create();

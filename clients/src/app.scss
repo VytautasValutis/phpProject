@@ -8,4 +8,23 @@ body {
 @import 'home';
 @import 'clients';
 
+.msg-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+    .msg-bin {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+    }
+}
 
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}

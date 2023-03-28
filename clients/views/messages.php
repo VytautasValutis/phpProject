@@ -6,6 +6,7 @@ if(!Messages::msg()->hasToShow()) return;
 
 ?>
 
+<div class="msg-container">
 <div class="msg-bin">
     <?php foreach(Messages::msg()->getMessages() as $msg) : ?>
     <div class="m-2 alert alert-<?= $msg['type'] ?>" role="alert">
@@ -13,3 +14,4 @@ if(!Messages::msg()->hasToShow()) return;
     </div>
     <?php endforeach ?>
 </div>
+    </div>

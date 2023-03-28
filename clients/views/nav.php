@@ -1,3 +1,4 @@
+<?php if(isset($hideNav)) return ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?= URL ?>">CMS</a>
@@ -17,7 +18,7 @@
         </li>
       </ul>
       <span class="navbar-text">
-        Navbar text with an inline element
+        <a class="nav-link" href="<?= URL ?>login">login</a>
       </span>
     </div>
   </div>
