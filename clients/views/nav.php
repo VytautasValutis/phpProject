@@ -1,3 +1,6 @@
+<?php
+use App\Services\Auth;
+?>
 <?php if(isset($hideNav)) return ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -18,7 +21,14 @@
         </li>
       </ul>
       <span class="navbar-text">
-        <a class="nav-link" href="<?= URL ?>login">login</a>
+        <?php if(Auth::get()->isAuth()) : ?>
+          <span><?= Auth::get()->getNAme() ?></span>
+            <form class="logout" action="<?= URL ?>logout" method="post">
+              <button type="submit">logout</button>
+            </form>
+          <?php else : ?>
+            <a class="nav-link" href="<?= URL ?>login">login</a>
+        <?php endif ?>  
       </span>
     </div>
   </div>

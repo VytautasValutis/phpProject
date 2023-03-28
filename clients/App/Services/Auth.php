@@ -7,9 +7,9 @@ class Auth {
     private $user;
     private static $auth;
 
-    public static function msg()
+    public static function get()
     {
-        return self::auth ?? self::$auth = new self;
+        return self::$auth ?? self::$auth = new self;
     }
 
     private function __construct()
@@ -25,11 +25,31 @@ class Auth {
         foreach($users as $user) {
             if($user['name'] == $name && $user['psw'] == md5($psw)) {
                 $_SESSION['user'] = $user['name'];
+                Messages::msg()->addMessage('Welcome', 'success');
                 return true;
             }
         }
         Messages::msg()->addMessage('invalid password or user name','danger');
         return false;
     }
+
+    public function logout() : void
+    {
+        
+        unset($_SESSION['user']);
+        $this->user = null;
+        Messages::msg()->addMessage('You are out','info');
+    }
+
+    public function isAuth() : bool
+    {
+        return null !== $this->user;
+    }
+
+    public function getName() : string
+    {
+        return $this->user;
+    }
+
 
 }

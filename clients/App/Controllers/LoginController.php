@@ -20,16 +20,9 @@ class LoginController {
         return App::redirect('login');
     }
 
-    public function isAuth() : bool
+    public function logout() 
     {
-        return null !== $this->user;
+        Auth::get()->logout();
+        return App::redirect('login');
     }
-
-    public function getName() 
-    {
-        return $this->user;
-    }
-
-
-
 }
