@@ -30,3 +30,7 @@ Route::get('/labas/{animal}', [PirmasController::class, 'helloAnimal']);
 
 Route::get('calc', [C::class, 'show'])->name('show');
 Route::post('calc', [C::class, 'doCalc'])->name('do-calc');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
