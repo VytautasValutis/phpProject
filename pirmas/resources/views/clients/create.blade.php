@@ -12,16 +12,17 @@
                 <form action="{{route('clients-store')}}" method="post">
                     <div class="mb-3">
                         <label class="form-label">Client name</label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" value={{old('name')}}>
                         <div class="form-text">Add client name here</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Client surname</label>
-                        <input type="text" class="form-control" name="surname">
+                        <input type="text" class="form-control" name="surname" value={{old('surname')}}>
                         <div class="form-text">Add client surname here</div>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="tt" name="tt">
+                        <input type="checkbox" class="form-check-input"
+                        @if(old('tt')) checked  @endif id="tt" name="tt">
                         <label class="form-check-label" for="tt">Has TikTok account</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
