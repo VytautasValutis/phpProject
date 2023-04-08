@@ -12,12 +12,12 @@
                 <form action="{{route('clients-update', $client)}}" method="post">
                     <div class="mb-3">
                         <label class="form-label">Client name</label>
-                        <input type="text" class="form-control" name="name" value="{{ $client->name }}">
+                        <input type="text" class="form-control" name="name" value="{{ old('name', $client->name) }}">
                         <div class="form-text">Add client name here</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Client surname</label>
-                        <input type="text" class="form-control" name="surname" value="{{ $client->surname }}">
+                        <input type="text" class="form-control" name="surname" value="{{ old('surname',$client->surname) }}">
                         <div class="form-text">Add client surname here</div>
                     </div>
                     <div class="mb-3 form-check">
