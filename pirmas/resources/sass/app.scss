@@ -28,3 +28,15 @@
         gap: 10px;
     }
 }
+.sort-filter-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    position: relative;
+    button, a {
+        top: -5px;
+        position: relative;
+    }
+}
