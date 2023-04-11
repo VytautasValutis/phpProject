@@ -16,12 +16,18 @@ class ClientController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $sort = $request->sort ?? '';
+
         $clients = Client::all()->sortBy('name');
 
         return view('clients.index', [
-            'clients' => $clients
+            'clients' => $clients,
+            'sortSelect' => Client::SORT,
+            'sort' => $sort,
+            'filterSelect' => Client::FILTER,
+            'filter' => $filter,
         ]);
     }
 
@@ -84,7 +90,8 @@ class ClientController extends Controller
             $request->flash();
             return redirect()
                 ->back()
-                ->withErrors($validator);
+                ->withErrors($validator)
+                ->with('tt', $request->tt ?? 0);
         }
 
         $client->name = $request->name;
