@@ -10,7 +10,7 @@
             <form action="{{route('clients-index')}}" method="get">
               <div class="container">
                 <div class="row">
-                  <div class="col-5">
+                  <div class="col-4">
                     <div class="mb-3">
                       <label class="form-label">Sort</label>
                       <select class="form-select" name="sort">
@@ -21,14 +21,26 @@
                       <div class="form-text">Please select your sort preferences</div>
                     </div>
                   </div>
-                  <div class="col-5">
+                  <div class="col-4">
                     <div class="mb-3">
                       <label class="form-label">Filter</label>
-                      <select class="form-select">
-                        <option selected>BBB</option>
-                        <option value="1">One</option>
+                      <select class="form-select" name="filter">
+                        @foreach($filterSelect as $value => $txt)
+                          <option value="{{$value}}" @if($value === $filter) selected @endif>{{$txt}}</option>
+                        @endforeach
                       </select>
                       <div class="form-text">Please select your filter preferences</div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="mb-3">
+                      <label class="form-label">Result per page</label>
+                      <select class="form-select" name="per">
+                        @foreach($perSelect as $value => $txt)
+                          <option value="{{$value}}" @if($value === $per) selected @endif>{{$txt}}</option>
+                        @endforeach
+                      </select>
+                      <div class="form-text">Page preferences</div>
                     </div>
                   </div>
                   <div class="col-2">
@@ -69,6 +81,9 @@
                 @endforelse
                 </ul>
             </div>
+        </div>
+        <div class="m-2">
+          {{ $clients->links() }}
         </div>
     </div>
   </div>
