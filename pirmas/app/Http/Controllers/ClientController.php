@@ -25,7 +25,7 @@ class ClientController extends Controller
         $clients = match($filter) {
             'tt' => Client::where('tt', 1),
             'fb' => Client::where('tt', 0),
-            'default' => Client::where('tt', 0)->orWhere('tt', 1)
+            default => Client::where('tt', 0)->orWhere('tt', 1)
         };
 
         $clients = match($sort) {
@@ -33,7 +33,7 @@ class ClientController extends Controller
             'name-desc' => $clients->orderBy('name', 'desc'),
             'surname-asc' => $clients->orderBy('surname'),
             'surname-desc' => $clients->orderBy('surname', 'desc'),
-            'default' => $clients
+            default => $clients
         };
 
         $clients = $clients->paginate($per)->withQueryString();
