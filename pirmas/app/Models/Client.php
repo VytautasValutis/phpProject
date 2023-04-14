@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     const SORT = [
         'default' => 'No sort',
@@ -28,5 +29,10 @@ class Client extends Model
         '11' => '11 pp',
         '19' => '19 pp',
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
 
