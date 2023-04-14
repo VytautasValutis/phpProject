@@ -34,7 +34,7 @@ class OrderController extends Controller
             'client_id' => $request->client_id,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('orders-index');
     }
 
     public function show(Order $order)
@@ -44,12 +44,23 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        //
+
+        return view('orders.edit', [
+            'order' => $order
+        ]);
+
     }
 
     public function update(Request $request, Order $order)
     {
-        //
+        $order ->update([
+            'title' => $request->title,
+            'price' => $request->price
+        ]);
+        return redirect()
+            ->route('orders-index')
+            ->with('light-up', $order->id)
+            ;
     }
 
     public function destroy(Order $order)

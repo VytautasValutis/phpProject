@@ -82,3 +82,13 @@
         position: relative;
     }
 }
+
+.order-line.active {
+    background-color: #eee;
+    padding: 4px;
+}
+
+.client-line.active {
+    background-color: #eee;
+    padding: 4px;
+}

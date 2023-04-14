@@ -57,7 +57,7 @@
                     <ul class="list-group">
                         @forelse($clients as $client)
                         <li class="list-group-item">
-                            <div class="client-line">
+                            <div class="client-line @if(Session::has('light-up') && Session::get('light-up') == $client->id) active @endif">
                                 <div class="client-info">
                                     {{ $client->name }}
                                     {{ $client->surname }}

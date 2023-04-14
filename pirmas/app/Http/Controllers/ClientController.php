@@ -21,6 +21,7 @@ class ClientController extends Controller
         $sort = $request->sort ?? '';
         $filter = $request->filter ?? '';
         $per = (int) ($request->per ?? 8);
+        $page = $request->page ?? 1;
 
         $clients = match($filter) {
             'tt' => Client::where('tt', 1),
@@ -36,6 +37,13 @@ class ClientController extends Controller
             default => $clients
         };
 
+        $request->session()->put('last-client-view', [
+            'sort' => $sort,
+            'filter' => $filter,
+            'page' => $page,
+            'per' => $per,
+        ]);
+
         $clients = $clients->paginate($per)->withQueryString();
 
         return view('clients.index', [
@@ -46,6 +54,7 @@ class ClientController extends Controller
             'filter' => $filter,
             'perSelect' => Client::PER,
             'per' => $per,
+            'page' => $page,
         ]);
     }
 
@@ -79,7 +88,8 @@ class ClientController extends Controller
         $client->save();
         return redirect()
             ->route('clients-index')
-            ->with('ok', 'New clients was ceated');
+            ->with('ok', 'New clients was ceated')
+            ;
     }
 
     public function show(Client $client)
@@ -90,8 +100,9 @@ class ClientController extends Controller
 
     }
 
-    public function edit(Client $client)
+    public function edit(Request $request, Client $client)
     {
+        
         return view('clients.edit', [
             'client' => $client
         ]);
@@ -116,12 +127,23 @@ class ClientController extends Controller
         $client->surname = $request->surname;
         $client->tt = isset($request->tt) ? 1 : 0;
         $client->save();
-        return redirect()->route('clients-index');
+        return redirect()
+            ->route('clients-index', $request->session()->get('last-client-view', []))
+            ->With('ok', 'The client was updated')
+            ->with('light-up', $client->id)
+            ;
 
     }
 
     public function destroy(Client $client)
     {
+        if($client->order->count()) {
+            return redirect()
+            ->back()
+            ->with('info', 'Has order');
+
+        }
+        
         $client->delete();
         return redirect()
             ->route('clients-index')
