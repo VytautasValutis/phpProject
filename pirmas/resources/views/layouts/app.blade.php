@@ -99,6 +99,7 @@
         </nav>
         @include('layouts.messages')
         @include('layouts.errors')
+        @include('layouts.delete')
         <main class="py-4">
             @yield('content')
         </main>

@@ -135,12 +135,12 @@ class ClientController extends Controller
 
     }
 
-    public function destroy(Client $client)
+    public function destroy(Request $request, Client $client)
     {
-        if($client->order->count()) {
+        if(!$request->confirm && $client->order->count()) {
             return redirect()
             ->back()
-            ->with('info', 'Has order');
+            ->with('delete-modal', 'This client has orders. Do Ypur really want to delete?');
 
         }
         
