@@ -23,8 +23,10 @@
                         <div class="mb-3">
                             <label class="form-label">Client</label>
                             <select class="form-select" name="client_id">
+                                <option value="">Clients list</option>
                                 @foreach($clients as $client)
-                                <option value="{{$client->id}}" >{{$client->name}} {{$client->surname}}</option>
+                                <option value="{{$client->id}}" @if($client->id == $id) selected @endif
+                                >{{$client->name}} {{$client->surname}}</option>
                                 @endforeach
                             </select>
                             <div class="form-text">Please select client</div>

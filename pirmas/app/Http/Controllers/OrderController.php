@@ -10,20 +10,31 @@ class OrderController extends Controller
 {
     public function index()
     {
-        //
-    }
-
-    public function create()
-    {
-        $clients = Client::all();
-        return view('orders.create', [
-            'clients' => $clients
+        $orders = Order::all();
+        return view('orders.index', [
+            'orders' => $orders
         ]);
     }
 
-    public function store(StoreOrderRequest $request)
+    public function create(Request $request)
     {
-        //
+        $clients = Client::all();
+        $id = $request->id ?? 0;
+        return view('orders.create', [
+            'clients' => $clients,
+            'id' => $id
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        Order::create([
+            'title' => $request->title,
+            'price' => $request->price,
+            'client_id' => $request->client_id,
+        ]);
+
+        return redirect()->back();
     }
 
     public function show(Order $order)
@@ -36,7 +47,7 @@ class OrderController extends Controller
         //
     }
 
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(Request $request, Order $order)
     {
         //
     }

@@ -28,5 +28,10 @@ class Client extends Model
         '11' => '11 pp',
         '19' => '19 pp',
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
 
