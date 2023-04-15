@@ -23,6 +23,12 @@
             letter-spacing: 5px;
             padding-left: 20px;
         }
+        .orders-count {
+            font-weight: bold;
+            padding:  0 5px;
+            color: red;
+        }
+
     }
 
     .buttons {
@@ -45,7 +51,6 @@
         .order-data {
             width: 300px;
         }
-
         .client {
             color: skyblue;
             font-weight: bold;

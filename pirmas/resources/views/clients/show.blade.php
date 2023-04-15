@@ -34,6 +34,13 @@
                                     {{ $order->title }}
                                     {{ $order->price }}
                                 </div>
+                                <div class="buttons">
+                                    <form action="{{route('orders-delete', $order)}}" method="post">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </div>
                             </div>
                         </li>
                         @empty

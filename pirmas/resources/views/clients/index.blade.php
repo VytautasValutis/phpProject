@@ -62,6 +62,7 @@
                                     {{ $client->name }}
                                     {{ $client->surname }}
                                     <span>{{ $client->tt ? 'TIK TOK' : 'FB' }}</span>
+                                    <div class="orders-count">orders : [{{$client->order->count()}}]</div>
                                 </div>
                                 <div class="buttons">
                                     <a href="{{route('clients-show', $client)}}" class="btn btn-info">Show</a>

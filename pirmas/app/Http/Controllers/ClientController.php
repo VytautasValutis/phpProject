@@ -140,8 +140,8 @@ class ClientController extends Controller
         if(!$request->confirm && $client->order->count()) {
             return redirect()
             ->back()
-            ->with('delete-modal', 'This client has orders. Do Ypur really want to delete?');
-
+            ->with('delete-modal', ['This client has orders. Do Ypur really want to delete?',
+            $client->id]);
         }
         
         $client->delete();

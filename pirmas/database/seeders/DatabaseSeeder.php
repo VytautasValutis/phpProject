@@ -17,13 +17,22 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
         ]);
         $faker = Faker::create();
-        foreach(range(1,100) as $_) {
+        foreach(range(1, 20) as $_) {
             DB::table('clients')->insert([
                 'name' => $faker->firstName,
                 'surname' => $faker->lastName,
                 'tt' => rand(0, 1),
             ]);
-    
         }
+        $p = ['Bata', 'Pica', 'Antis', 'Dramblys', 'Kastuvas', 'Ananasas', 'Puodas', 'ledai', 'bananai', 'kojines', 'plaktukas', 'keptuve'];
+        $faker = Faker::create();
+        foreach(range(1, 100) as $_) {
+            DB::table('orders')->insert([
+                'title' => $p[rand(2, count($p) - 1)],
+                'price' => rand(10, 1000) / 100,
+                'client_id' => rand(1, 20),
+            ]);
+        }
+
     }
 }
