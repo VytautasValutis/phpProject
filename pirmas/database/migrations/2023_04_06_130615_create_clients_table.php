@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('surname', 100);
             $table->unsignedTinyInteger('tt');
+            $table->unsignedBigInteger('town_id');
+            $table->foreign('town_id')->references('id')->on('towns');
         });
     }
 

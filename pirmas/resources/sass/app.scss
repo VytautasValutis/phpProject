@@ -23,6 +23,18 @@
             letter-spacing: 5px;
             padding-left: 20px;
         }
+        .orders-count {
+            font-weight: bold;
+            padding:  0 5px;
+            color: red;
+        }
+        .clients-count {
+            font-weight: bold;
+            padding:  0 5px;
+            color: red;
+            line-height: 3em;
+        }
+
     }
 
     .buttons {
@@ -45,7 +57,6 @@
         .order-data {
             width: 300px;
         }
-
         .client {
             color: skyblue;
             font-weight: bold;
@@ -91,4 +102,9 @@
 .client-line.active {
     background-color: #eee;
     padding: 4px;
+}
+
+.modal {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.226);
 }
