@@ -23,7 +23,7 @@
                         <div class="mb-3">
                             <label class="form-label">Client</label>
                             <select class="form-select" name="client_id">
-                                <option value="">Clients list</option>
+                                <option value="0">Clients list</option>
                                 @foreach($clients as $client)
                                 <option value="{{$client->id}}" @if($client->id == $id) selected @endif
                                 >{{$client->name}} {{$client->surname}}</option>

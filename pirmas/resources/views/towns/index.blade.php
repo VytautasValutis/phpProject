@@ -14,8 +14,9 @@
                         <li class="list-group-item">
                             <div class="client-line">
                                 <div class="client-info">
-                                    {{ $town->name }}
-                                    {{-- <div class="orders-count">orders : [{{$client->order->count()}}]</div> --}}
+                                    <h2>{{ $town->name }}</h2>
+                                    <div class="clients-count">clients : [{{$town->client->count()}}]</div>
+                                    <div class="clients-count">orders : [{{$town->ordersCount}}]</div>
                                 </div>
                                 <div class="buttons">
                                     <a href="{{route('towns-show', $town)}}" class="btn btn-info">Show</a>
