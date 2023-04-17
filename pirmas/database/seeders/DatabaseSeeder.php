@@ -16,16 +16,24 @@ class DatabaseSeeder extends Seeder
             'email' => 'briedis@gmail.com',
             'password' => Hash::make('123'),
         ]);
-        $faker = Faker::create();
+        $faker = Faker::create('lt_LT');
+
+        foreach(range(1, 5) as $_) {
+            DB::table('towns')->insert([
+                'name' => $faker->city,
+            ]);
+        }
+
         foreach(range(1, 20) as $_) {
             DB::table('clients')->insert([
                 'name' => $faker->firstName,
                 'surname' => $faker->lastName,
                 'tt' => rand(0, 1),
+                'town_id' => rand(1, 5),
             ]);
         }
         $p = ['Bata', 'Pica', 'Antis', 'Dramblys', 'Kastuvas', 'Ananasas', 'Puodas', 'ledai', 'bananai', 'kojines', 'plaktukas', 'keptuve'];
-        $faker = Faker::create();
+
         foreach(range(1, 100) as $_) {
             DB::table('orders')->insert([
                 'title' => $p[rand(2, count($p) - 1)],
