@@ -6,23 +6,26 @@
         <div class="col-12 ">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h1>Towns list</h1>
+                    <h1>Categories list</h1>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        @forelse($towns as $town)
+                        @forelse($cats as $cat)
                         <li class="list-group-item">
-                            <div class="client-line">
-                                <div class="client-info">
-                                    <h2>{{ $town->name }}</h2>
-                                    <div class="clients-count">clients : [{{$town->client->count()}}]</div>
-                                    <div class="clients-count">orders : [{{$town->ordersCount}}]</div>
+                            <div class="cat-line">
+                                <div class="cat-info">
+                                    <h2>{{ $cat->title }}</h2>
+                                    <div class="cat-colors-count">
+                                    @for($i = 0; $i < $cat->colors_count; $i++)
+                                        <div></div>
+                                    @endfor
+                                    </div>
                                 </div>
                                 <div class="buttons">
-                                    <a href="{{route('towns-show', $town)}}" class="btn btn-info">Show</a>
-                                    <a href="{{route('towns-edit', $town)}}" class="btn btn-success">Edit</a>
-                                    <form action="{{route('towns-delete', $town)}}" method="post">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    <a href="{{route('cats-show', $cat)}}" class="btn btn-outline-info">Show</a>
+                                    <a href="{{route('cats-edit', $cat)}}" class="btn btn-outline-success">Edit</a>
+                                    <form action="{{route('cats-delete', $cat)}}" method="post">
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -31,7 +34,7 @@
                         </li>
                         @empty
                         <li class="list-group-item">
-                            <div class="clients-line">No towns</div>
+                            <div class="cat-line">No categories</div>
                         </li>
                         @endforelse
                     </ul>

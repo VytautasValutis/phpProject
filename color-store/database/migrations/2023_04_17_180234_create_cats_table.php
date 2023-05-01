@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('cats', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('title', 100);
+            $table->unsignedTinyInteger('colors_count');
         });
     }
 
