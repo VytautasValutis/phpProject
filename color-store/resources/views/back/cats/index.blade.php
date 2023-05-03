@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 ">
+        <div class="col-12">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h1>Categories list</h1>
+                    <h1>Categories List</h1>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -14,18 +14,24 @@
                         <li class="list-group-item">
                             <div class="cat-line">
                                 <div class="cat-info">
-                                    <h2>{{ $cat->title }}</h2>
+                                    <div class="photo">
+                                        @if($cat->photo)
+                                        <img src="{{asset('cats-photo') .'/t_'. $cat->photo}}">
+                                        @else
+                                        <img src="{{asset('cats-photo') .'/no.png'}}">
+                                        @endif
+                                    </div>
+                                    <h2>{{$cat->title}}</h2>
                                     <div class="cat-colors-count">
-                                    @for($i = 0; $i < $cat->colors_count; $i++)
-                                        <div></div>
-                                    @endfor
+                                        @for($i = 0; $i < $cat->colors_count; $i++)
+                                            <div class="--random--color"></div>
+                                            @endfor
                                     </div>
                                 </div>
                                 <div class="buttons">
-                                    <a href="{{route('cats-show', $cat)}}" class="btn btn-outline-info">Show</a>
                                     <a href="{{route('cats-edit', $cat)}}" class="btn btn-outline-success">Edit</a>
                                     <form action="{{route('cats-delete', $cat)}}" method="post">
-                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger">delete</button>
                                         @csrf
                                         @method('delete')
                                     </form>
