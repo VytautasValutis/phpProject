@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cat;
+use App\Models\Tag;
 use App\Models\Order;
+use App\Models\ProductTag;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class FrontController extends Controller
@@ -15,6 +17,8 @@ class FrontController extends Controller
         $products = Product::all();
 
         $products->map(function($p) use ($request) {
+
+            //VOTES
             if (!$request->user()) {
                 $showVoteButton = false;
             } else {
@@ -23,12 +27,147 @@ class FrontController extends Controller
             }
             $p->votes = count($p->rates);
             $p->showVoteButton = $showVoteButton;
+
+            // TAGS
+            $tagsId = $p->productTag->pluck('tag_id')->all();
+            $tags = Tag::whereIn('id', $tagsId)->get();
+            $p->tags = $tags;
+
         });
 
 
 
         return view('front.index', [
             'products' => $products
+        ]);
+    }
+
+    public function getTagsList(Request $request)
+    {
+        $tag = $request->t ?? '';
+
+        if ($tag) {
+            $tags = Tag::where('title', 'like', '%'.$tag.'%')
+            ->limit(5)
+            ->get();
+        } else {
+            $tags = [];
+        }
+        
+
+        $html = view('front.tag-search-list')->with(['tags' => $tags])->render();
+        
+        return response()->json([
+            'tags' => $html,
+        ]);
+    }
+
+    public function addNewTag(Request $request, Product $product)
+    {
+        $title = $request->tag ?? '';
+
+        if (strlen($title) < 3) {
+            return response()->json([
+                'message' => 'Invalid tag title',
+                'status' => 'error'
+            ]);
+        }
+
+        $tag = Tag::where('title', $title)->first();
+
+        if (!$tag) {
+
+            $tag = Tag::create([
+                'title' => $title
+            ]);
+        }
+
+
+        $tagsId = $product->productTag->pluck('tag_id')->all();
+        
+        if (in_array($tag->id, $tagsId)) {
+            return response()->json([
+                'message' => 'Tag exists',
+                'status' => 'error'
+            ]);
+        }
+
+        ProductTag::create([
+            'tag_id' => $tag->id,
+            'product_id' => $product->id
+        ]);
+
+
+        return response()->json([
+            'message' => 'Tag added',
+            'status' => 'ok',
+            'tag' => $tag->title,
+            'id' => $tag->id,
+        ]);
+
+
+    }
+
+    public function deleteTag(Request $request, Product $product)
+    {
+        $tagId = $request->tag ?? 0;
+
+        $tag = Tag::find($tagId);
+
+        if (!$tag) {
+            return response()->json([
+                'message' => 'Invalid tag id',
+                'status' => 'error'
+            ]);
+        }
+
+        $productTag = ProductTag::where('product_id', $product->id)
+        ->where('tag_id', $tag->id)->first();
+
+        $productTag->delete();
+        return response()->json([
+            'message' => 'Tag removed',
+            'status' => 'ok',
+            'tag' => $tag->title,
+            'id' => $tag->id,
+        ]);
+
+
+    }
+
+    public function addTag(Request $request, Product $product)
+    {
+        $tagId = $request->tag ?? 0;
+
+        $tag = Tag::find($tagId);
+
+        if (!$tag) {
+            return response()->json([
+                'message' => 'Invalid tag id',
+                'status' => 'error'
+            ]);
+        }
+
+        $tagsId = $product->productTag->pluck('tag_id')->all();
+        
+        if (in_array($tagId, $tagsId)) {
+            return response()->json([
+                'message' => 'Tag exists',
+                'status' => 'error'
+            ]);
+        }
+
+        ProductTag::create([
+            'tag_id' => $tagId,
+            'product_id' => $product->id
+        ]);
+
+
+        return response()->json([
+            'message' => 'Tag added',
+            'status' => 'ok',
+            'tag' => $tag->title,
+            'id' => $tag->id,
         ]);
     }
 

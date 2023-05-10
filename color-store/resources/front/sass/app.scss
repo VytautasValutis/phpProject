@@ -248,10 +248,23 @@
         color: skyblue;
         padding: 0 7px;
         font-size: 20px;
+        position: relative;
         &::before {
             content: '#';
             font-weight: bold;
             font-size: 30px;
+        }
+        i {
+            &::after {
+                content: '\2573';
+                position: relative;
+                top: -4px;
+                font-size: 10px;
+                color: gray;
+                padding: 0 0 0 5px;
+                cursor: pointer;
+                font-style: normal;
+            }
         }
     }
     .add {
@@ -290,8 +303,8 @@
                 }
             }
         }
-        input:focus+.list {
-            display: block;
+        .btn-info {
+            margin-left: 20px;
         }
     }
 }
