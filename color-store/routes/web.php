@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductController as P;
 use App\Http\Controllers\FrontController as F;
 use App\Http\Controllers\CartController as CART;
 use App\Http\Controllers\OrderController as O;
-
+use App\Http\Controllers\TagController as T;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,13 @@ use App\Http\Controllers\OrderController as O;
 |
 */
 
+Route::prefix('tags')->name('tags-')->group(function () {
+    Route::get('/', [T::class, 'index'])->name('index')->middleware('role:admin');
+    Route::get('/list', [T::class, 'list'])->name('list')->middleware('role:admin');
 
+    Route::post('/create', [T::class, 'create'])->name('create')->middleware('role:admin');
+    Route::delete('/delete/{tag}', [T::class, 'destroy'])->name('delete')->middleware('role:admin');
+});
 
 Route::name('front-')->group(function () {
     Route::get('/', [F::class, 'index'])->name('index');
@@ -28,8 +34,9 @@ Route::name('front-')->group(function () {
     Route::get('/download/{order}', [F::class, 'download'])->name('download')->middleware('role:admin|client');
     Route::put('/vote/{product}', [F::class, 'vote'])->name('vote')->middleware('role:admin|client');
     Route::get('/tags-list', [F::class, 'getTagsList'])->name('tags-list')->middleware('role:admin|client');
-    Route::put('/add-tag/{tag}', [F::class, 'addTag'])->name('add-tag')->middleware('role:admin|client');
-    Route::post('/add-new-tag', [F::class, 'addNewTag'])->name('add-new-tag')->middleware('role:admin|client');
+    Route::put('/add-tag/{product}', [F::class, 'addTag'])->name('add-tag')->middleware('role:admin|client');
+    Route::put('/delete-tag/{product}', [F::class, 'deleteTag'])->name('delete-tag')->middleware('role:admin|client');
+    Route::post('/add-new-tag/{product}', [F::class, 'addNewTag'])->name('add-new-tag')->middleware('role:admin|client');
 });
 
 Route::prefix('cart')->name('cart-')->group(function () {
